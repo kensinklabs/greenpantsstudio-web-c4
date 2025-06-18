@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pants Studio - Startup Growth Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 35px; /* Set the height of your wide logo */
+            width: auto;  /* Auto width preserves the aspect ratio */
+        }
+
+        .cta-button {
+            background: #006400;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #005000;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #ffffff;
+            color: #333;
+            padding: 160px 0 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+            color: #006400;
+        }
+
+        /* Video Container - Responsive 16:9 Aspect Ratio */
+        .video-container {
+            margin: 3rem auto; /* Center the video container */
+            position: relative;
+            max-width: 800px; /* Increased max-width for the video itself */
+            width: 100%; /* Ensure it takes full width up to max-width */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (height / width = 9/16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background-color: #1a1a1a; /* Background for when video loads/iframes */
+            border: 2px solid #006400;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 8px; /* Match container border-radius */
+        }
+
+        /* Services Section */
+        .services {
+            padding: 60px 0 80px;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #006400;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #006400;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .card-subheadline {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #006400;
+            font-weight: bold;
+        }
+
+        .benefit-tag {
+            background: #e6f0e9;
+            color: #006400;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+            border: 1px solid #b3d1be;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #006400;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .video-container {
+                max-width: 100%; /* Ensure video scales down on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <img src='https://i.postimg.cc/VvkN36bX/greenpantslogo.png' alt='Green Pants Studio Logo'/>
+            </div>
+            <a href="https://calendar.notion.so/meet/isaiahmcpeak/ex9dc4o7z" target="_blank" class="cta-button">Book a Call</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Most Businesses Fail Due to Bureaucratic Habits People Don't Even Realize They Have.</h1>
+            
+            <div class="video-container">
+                <iframe src="https://share.descript.com/embed/Vg18zfpiWjf?transcript=false" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Growth Services</h2>
+            
+            <div class="services-grid">
+                <!-- The Chefs Card (Left) -->
+                <div class="service-card">
+                    <div class="service-icon">🧑‍🍳</div>
+                    <h3>The Chefs</h3>
+                    <p class="card-subheadline">High-value strategic service for companies ready to make significant growth investments.</p>
+                    
+                    <p>Our expert strategists work with you to build comprehensive funnels and breakthrough growth strategies that define your path forward.</p>
+                    
+                    <ul class="service-features">
+                        <li>Whiteboard breakthrough sessions</li>
+                        <li>Complete funnel architecture</li>
+                        <li>Full strategic consulting</li>
+                        <li>Custom growth frameworks</li>
+                    </ul>
+                    
+                    <div class="benefit-tag">Build a Sustainable Growth Engine</div>
+                </div>
+
+                <!-- The Kitchen Card (Right) -->
+                <div class="service-card">
+                    <div class="service-icon">🍳</div>
+                    <h3>The Kitchen</h3>
+                    <p class="card-subheadline">These are the "boots on the ground" services that turn strategy into tangible results.</p>
+                    <p>A high-performing execution team that runs your growth bets board with precision and efficiency to hit the mark every time.</p>
+                    
+                    <ul class="service-features">
+                        <li>High-performing execution</li>
+                        <li>Low-cost growth bets</li>
+                        <li>Rapid testing & iteration</li>
+                        <li>Performance tracking & reporting</li>
+                    </ul>
+                    
+                    <div class="benefit-tag">Achieve Rapid, Iterative Progress</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Ready to Break Through?</h2>
+            <p>Stop letting hidden roadblocks kill your startup's potential. Let's build your growth machine together.</p>
+            <a href="https://calendar.notion.so/meet/isaiahmcpeak/ex9dc4o7z" target="_blank" class="cta-button">Book a Call Now</a>
+        </div>
+    </section>
+
+</body>
+</html>
