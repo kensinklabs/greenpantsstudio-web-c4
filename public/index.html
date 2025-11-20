@@ -1,534 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Pants Studio - Startup Growth Services</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #ffffff;
-            color: #333;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #ffffff;
+        color: #333;
+      }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        /* Header */
+      /* Header */
+      .header {
+        background: #ffffff;
+        padding: 1.5rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 35px;
+        width: auto;
+      }
+
+      .cta-button {
+        background: #006400;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      .cta-button:hover {
+        background: #005000;
+      }
+
+      /* Hero Section */
+      .hero {
+        background-color: #ffffff;
+        color: #333;
+        padding: 160px 0 0;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+        margin-bottom: 1rem;
+        max-width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.3;
+        color: #006400;
+      }
+
+      .hero-subheading {
+        font-size: 1.2rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
+
+      /* Video Container */
+      .video-container {
+        margin: 2.5rem auto; /* Reduced margin */
+        position: relative;
+        max-width: 100%;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        background-color: #1a1a1a;
+        border: 2px solid #006400;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 8px;
+      }
+
+      /* Partners Section */
+      .partners-section {
+        padding: 40px 0; /* Reduced padding */
+        background-color: #ffffff;
+      }
+
+      .partners-title {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        color: #999;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .logos-grid {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .logos-grid img {
+        max-height: 40px;
+        max-width: 150px;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+      }
+
+      .logos-grid img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+
+      .logos-grid img.logo-nul {
+        transform: scale(1.3);
+      }
+
+      .logos-grid img.logo-light {
+        filter: invert(1) grayscale(1);
+      }
+
+      .logos-grid img.logo-light:hover {
+        filter: invert(1) grayscale(0);
+      }
+
+      /* Team Section */
+      .team-section {
+        padding: 50px 0; /* Reduced padding */
+        background-color: #ffffff;
+      }
+
+      .team-section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #006400;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .team-member-card {
+        text-align: left;
+      }
+
+      .team-photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 1.5rem;
+      }
+
+      .team-info h3 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+      }
+
+      .team-title {
+        font-size: 1rem;
+        color: #006400;
+        margin-top: 0.25rem;
+      }
+
+      .team-bio {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 0.75rem;
+      }
+
+      /* Services Section */
+      .services {
+        padding: 50px 0; /* Reduced padding */
+      }
+
+      .services h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #006400;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+        border-top: 5px solid #006400;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .card-subheadline {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-card p {
+        margin-bottom: 1.5rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .service-features {
+        list-style: none;
+        margin: 1.5rem 0;
+      }
+
+      .service-features li {
+        padding: 0.5rem 0;
+        color: #555;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .service-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #006400;
+        font-weight: bold;
+      }
+
+      .benefit-tag {
+        background: #e6f0e9;
+        color: #006400;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 1rem;
+        border: 1px solid #b3d1be;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: #ffffff;
+        padding: 60px 0; /* Reduced padding */
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .contact h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #006400;
+      }
+
+      .contact p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #333;
+      }
+
+      /* =================================== */
+      /* ==  RESPONSIVE STYLES            == */
+      /* =================================== */
+      @media (max-width: 992px) {
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
         .header {
-            background: #ffffff;
-            padding: 1.5rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
+          padding: 1rem 0;
         }
 
         .logo img {
-            height: 35px;
-            width: auto;
+          height: 30px;
         }
 
         .cta-button {
-            background: #006400;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
+          padding: 10px 18px;
+          font-size: 0.9rem;
         }
 
-        .cta-button:hover {
-            background: #005000;
-        }
-
-        /* Hero Section */
         .hero {
-            background-color: #ffffff;
-            color: #333;
-            padding: 160px 0 0;
-            text-align: center;
+          padding-top: 120px;
         }
 
         .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            max-width: 950px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.3;
-            color: #006400;
+          font-size: 2.4rem;
+          line-height: 1.3;
         }
 
         .hero-subheading {
-            font-size: 1.2rem;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.5;
+          font-size: 1.1rem;
         }
 
-        /* Video Container */
-        .video-container {
-            margin: 2.5rem auto; /* Reduced margin */
-            position: relative;
-            max-width: 100%; 
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            background-color: #1a1a1a;
-            border: 2px solid #006400;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 8px;
-        }
-        
-        /* Partners Section */
-        .partners-section {
-            padding: 40px 0; /* Reduced padding */
-            background-color: #ffffff;
-        }
-        
-        .partners-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            color: #999;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .logos-grid {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .logos-grid img {
-            max-height: 40px;
-            max-width: 150px;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-        
-        .logos-grid img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-
-        .logos-grid img.logo-nul {
-            transform: scale(1.3);
-        }
-
-        .logos-grid img.logo-light {
-            filter: invert(1) grayscale(1);
-        }
-        
-        .logos-grid img.logo-light:hover {
-            filter: invert(1) grayscale(0);
-        }
-
-        /* Team Section */
+        .partners-section,
+        .services,
         .team-section {
-            padding: 50px 0; /* Reduced padding */
-            background-color: #ffffff;
+          padding: 40px 0; /* Reduced padding */
         }
 
-        .team-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #006400;
+        .logos-grid {
+          justify-content: center;
+          gap: 2rem 3rem;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .team-member-card {
-            text-align: left;
-        }
-
-        .team-photo {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .team-info h3 {
-            font-size: 1.4rem; 
-            font-weight: bold;
-            color: #333;
-            margin: 0;
-        }
-
-        .team-title {
-            font-size: 1rem;
-            color: #006400;
-            margin-top: 0.25rem;
-        }
-
-        .team-bio {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.75rem;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 50px 0; /* Reduced padding */
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #006400;
+        .services h2,
+        .team-section h2,
+        .contact h2 {
+          font-size: 2rem;
         }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
 
         .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-            border-top: 5px solid #006400;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        
-        .card-subheadline {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card p {
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .service-features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            color: #555;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #006400;
-            font-weight: bold;
-        }
-
-        .benefit-tag {
-            background: #e6f0e9;
-            color: #006400;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 1rem;
-            border: 1px solid #b3d1be;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background: #ffffff;
-            padding: 60px 0; /* Reduced padding */
-            text-align: center;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #006400;
+          padding: 2rem;
         }
 
         .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #333;
+          font-size: 1rem;
         }
-        
-        /* =================================== */
-        /* ==  RESPONSIVE STYLES            == */
-        /* =================================== */
-        @media (max-width: 992px) {
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
+      }
+
+      @media (max-width: 576px) {
+        .team-grid {
+          grid-template-columns: 1fr;
         }
-        
-        @media (max-width: 768px) {
-            .header {
-                padding: 1rem 0;
-            }
-
-            .logo img {
-                height: 30px;
-            }
-
-            .cta-button {
-                padding: 10px 18px;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                padding-top: 120px;
-            }
-
-            .hero h1 {
-                font-size: 2.4rem;
-                line-height: 1.3;
-            }
-
-            .hero-subheading {
-                font-size: 1.1rem;
-            }
-            
-            .partners-section, .services, .team-section {
-                padding: 40px 0; /* Reduced padding */
-            }
-            
-            .logos-grid {
-                justify-content: center;
-                gap: 2rem 3rem;
-            }
-
-            .services h2, .team-section h2, .contact h2 {
-                font-size: 2rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .service-card {
-                padding: 2rem;
-            }
-
-            .contact p {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav container">
-            <div class="logo">
-                <img src='https://i.postimg.cc/VvkN36bX/greenpantslogo.png' alt='Green Pants Studio Logo'/>
-            </div>
-            <a href="https://calendar.notion.so/meet/isaiahmcpeak/ex9dc4o7z" target="_blank" class="cta-button">Book a Call</a>
-        </nav>
+      <nav class="nav container">
+        <div class="logo">
+          <img
+            src="https://i.postimg.cc/VvkN36bX/greenpantslogo.png"
+            alt="Green Pants Studio Logo"
+          />
+        </div>
+        <!-- <a href="https://calendar.notion.so/meet/isaiahmcpeak/ex9dc4o7z" target="_blank" class="cta-button">Book a Call</a> -->
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>We Know Why Your Marketing Isn’t Working.</h1>
-            <p class="hero-subheading">It’s likely brand marketing—not growth marketing. Watch our founder’s Growth Machine video to learn the exact strategies he used to scale 8 startups to their first $1 million in revenue—and how you can apply the same high-tempo growth sprints to your own business.</p>
-            
-            <div class="video-container">
-                <iframe src="https://share.descript.com/embed/Vg18zfpiWjf?transcript=false" frameborder="0" allowfullscreen></iframe>
-            </div>
+      <div class="container">
+        <h1>We Know Why Your Marketing Isn’t Working.</h1>
+        <p class="hero-subheading">
+          It’s likely brand marketing—not growth marketing. Watch our founder’s
+          Growth Machine video to learn the exact strategies he used to scale 8
+          startups to their first $1 million in revenue—and how you can apply
+          the same high-tempo growth sprints to your own business.
+        </p>
+
+        <div class="video-container">
+          <iframe
+            src="https://share.descript.com/embed/Vg18zfpiWjf?transcript=false"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </div>
+      </div>
     </section>
 
     <!-- Partners Section -->
     <section class="partners-section">
-        <div class="container">
-            <p class="partners-title">Companies We've Partnered With</p>
-            <div class="logos-grid">
-                <img src="https://i.ibb.co/2398Jbhy/Color-Full-Logo-1.png" alt="Next Up Leader Logo" class="logo-nul">
-                <img src="https://www.pinwheel.com/hubfs/Logo%20full%20color%20svg.svg" alt="Pinwheel Logo">
-                <img src="https://skribe.ai/wp-content/uploads/2024/03/SkribeLogo-02-1-1-2.webp" alt="Skribe Logo">
-                <img src="https://images.squarespace-cdn.com/content/v1/61983cc1fa406742f93d3418/87d91bdb-a97a-441f-bfda-c99374621ad8/Evolve_Horizontal_Logo_Reversed.png?format=1500w" alt="Evolve Logo" class="logo-light">
-            </div>
+      <div class="container">
+        <p class="partners-title">Companies We've Partnered With</p>
+        <div class="logos-grid">
+          <img
+            src="https://i.ibb.co/2398Jbhy/Color-Full-Logo-1.png"
+            alt="Next Up Leader Logo"
+            class="logo-nul"
+          />
+          <img
+            src="https://www.pinwheel.com/hubfs/Logo%20full%20color%20svg.svg"
+            alt="Pinwheel Logo"
+          />
+          <img
+            src="https://skribe.ai/wp-content/uploads/2024/03/SkribeLogo-02-1-1-2.webp"
+            alt="Skribe Logo"
+          />
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/61983cc1fa406742f93d3418/87d91bdb-a97a-441f-bfda-c99374621ad8/Evolve_Horizontal_Logo_Reversed.png?format=1500w"
+            alt="Evolve Logo"
+            class="logo-light"
+          />
         </div>
+      </div>
     </section>
 
     <!-- Meet the Team Section -->
     <section class="team-section" id="team">
-        <div class="container">
-            <h2>Meet the Team</h2>
-            <div class="team-grid">
-                <!-- Isaiah McPeak -->
-                <div class="team-member-card">
-                    <img src="https://i.ibb.co/qLQCBVKs/Hfb6-PMf-Wg-PSSk0knl-Vz-Fd-Haa-Tfg.png" alt="Photo of Isaiah McPeak" class="team-photo">
-                    <div class="team-info">
-                        <h3>Isaiah McPeak</h3>
-                        <p class="team-title">CEO, Co-founder</p>
-                        <p class="team-bio">The Strategic Chameleon: Growth Leader and Communication Maestro.</p>
-                    </div>
-                </div>
-                <!-- Mosthofa Imran -->
-                <div class="team-member-card">
-                    <img src="https://i.ibb.co/ZRqtzyQ7/X4u1eqcv-Jfrm27eel-CQdu-YZNYek.jpg" alt="Photo of Mosthofa Imran" class="team-photo">
-                    <div class="team-info">
-                        <h3>Mosthofa Imran</h3>
-                        <p class="team-title">Chief Information Officer</p>
-                        <p class="team-bio">Master of all trades, Imran is the guy who turns ideas into action.</p>
-                    </div>
-                </div>
-                <!-- Chase Borden -->
-                <div class="team-member-card">
-                    <img src="https://placehold.co/400x400/eeeeee/333333?text=CB" alt="Photo of Chase Borden" class="team-photo">
-                    <div class="team-info">
-                        <h3>Chase Borden</h3>
-                        <p class="team-title">Growth Project Manager</p>
-                        <p class="team-bio">The master organizer who keeps our growth sprints on track and on time.</p>
-                    </div>
-                </div>
-                <!-- Minhajul Alam -->
-                <div class="team-member-card">
-                    <img src="https://i.ibb.co/bRJt8Nm9/x0srag-DUgy-F5bsv3-Tq-VQzwd4v-NI.png" alt="Photo of Minhajul Alam" class="team-photo">
-                    <div class="team-info">
-                        <h3>Minhajul Alam</h3>
-                        <p class="team-title">Engineering Manager</p>
-                        <p class="team-bio">Disciplined organizer blending management and engineering excellence.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+          <!-- Isaiah McPeak -->
+          <div class="team-member-card">
+            <img
+              src="https://i.ibb.co/qLQCBVKs/Hfb6-PMf-Wg-PSSk0knl-Vz-Fd-Haa-Tfg.png"
+              alt="Photo of Isaiah McPeak"
+              class="team-photo"
+            />
+            <div class="team-info">
+              <h3>Isaiah McPeak</h3>
+              <p class="team-title">CEO, Co-founder</p>
+              <p class="team-bio">
+                The Strategic Chameleon: Growth Leader and Communication
+                Maestro.
+              </p>
             </div>
+          </div>
+          <!-- Mosthofa Imran -->
+          <div class="team-member-card">
+            <img
+              src="https://i.ibb.co/ZRqtzyQ7/X4u1eqcv-Jfrm27eel-CQdu-YZNYek.jpg"
+              alt="Photo of Mosthofa Imran"
+              class="team-photo"
+            />
+            <div class="team-info">
+              <h3>Mosthofa Imran</h3>
+              <p class="team-title">Chief Information Officer</p>
+              <p class="team-bio">
+                Master of all trades, Imran is the guy who turns ideas into
+                action.
+              </p>
+            </div>
+          </div>
+          <!-- Chase Borden -->
+          <div class="team-member-card">
+            <img
+              src="https://placehold.co/400x400/eeeeee/333333?text=CB"
+              alt="Photo of Chase Borden"
+              class="team-photo"
+            />
+            <div class="team-info">
+              <h3>Chase Borden</h3>
+              <p class="team-title">Growth Project Manager</p>
+              <p class="team-bio">
+                The master organizer who keeps our growth sprints on track and
+                on time.
+              </p>
+            </div>
+          </div>
+          <!-- Minhajul Alam -->
+          <div class="team-member-card">
+            <img
+              src="https://i.ibb.co/bRJt8Nm9/x0srag-DUgy-F5bsv3-Tq-VQzwd4v-NI.png"
+              alt="Photo of Minhajul Alam"
+              class="team-photo"
+            />
+            <div class="team-info">
+              <h3>Minhajul Alam</h3>
+              <p class="team-title">Engineering Manager</p>
+              <p class="team-bio">
+                Disciplined organizer blending management and engineering
+                excellence.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="container">
-            <h2>Our Growth Services</h2>
-            
-            <div class="services-grid">
-                <!-- The Chefs Card (Left) -->
-                <div class="service-card">
-                    <div class="service-icon">🧑‍🍳</div>
-                    <h3>The Chefs</h3>
-                    <p class="card-subheadline">High-value strategic service for companies ready to make significant growth investments.</p>
-                    <p>Our expert strategists work with you to build comprehensive funnels and breakthrough growth strategies that define your path forward.</p>
-                    <ul class="service-features">
-                        <li>Whiteboard breakthrough sessions</li>
-                        <li>Complete funnel architecture</li>
-                        <li>Full strategic consulting</li>
-                        <li>Custom growth frameworks</li>
-                    </ul>
-                    <div class="benefit-tag">Build a Sustainable Growth Engine</div>
-                </div>
+      <div class="container">
+        <h2>Our Growth Services</h2>
 
-                <!-- The Kitchen Card (Right) -->
-                <div class="service-card">
-                    <div class="service-icon">🍳</div>
-                    <h3>The Kitchen</h3>
-                    <p class="card-subheadline">These are the "boots on the ground" services that turn strategy into tangible results.</p>
-                    <p>A high-performing execution team that runs your growth bets board with precision and efficiency to hit the mark every time.</p>
-                    <ul class="service-features">
-                        <li>High-performing execution</li>
-                        <li>Low-cost growth bets</li>
-                        <li>Rapid testing & iteration</li>
-                        <li>Performance tracking & reporting</li>
-                    </ul>
-                    <div class="benefit-tag">Achieve Rapid, Iterative Progress</div>
-                </div>
-            </div>
+        <div class="services-grid">
+          <!-- The Chefs Card (Left) -->
+          <div class="service-card">
+            <div class="service-icon">🧑‍🍳</div>
+            <h3>The Chefs</h3>
+            <p class="card-subheadline">
+              High-value strategic service for companies ready to make
+              significant growth investments.
+            </p>
+            <p>
+              Our expert strategists work with you to build comprehensive
+              funnels and breakthrough growth strategies that define your path
+              forward.
+            </p>
+            <ul class="service-features">
+              <li>Whiteboard breakthrough sessions</li>
+              <li>Complete funnel architecture</li>
+              <li>Full strategic consulting</li>
+              <li>Custom growth frameworks</li>
+            </ul>
+            <div class="benefit-tag">Build a Sustainable Growth Engine</div>
+          </div>
+
+          <!-- The Kitchen Card (Right) -->
+          <div class="service-card">
+            <div class="service-icon">🍳</div>
+            <h3>The Kitchen</h3>
+            <p class="card-subheadline">
+              These are the "boots on the ground" services that turn strategy
+              into tangible results.
+            </p>
+            <p>
+              A high-performing execution team that runs your growth bets board
+              with precision and efficiency to hit the mark every time.
+            </p>
+            <ul class="service-features">
+              <li>High-performing execution</li>
+              <li>Low-cost growth bets</li>
+              <li>Rapid testing & iteration</li>
+              <li>Performance tracking & reporting</li>
+            </ul>
+            <div class="benefit-tag">Achieve Rapid, Iterative Progress</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="container">
-            <h2>Ready to Break Through?</h2>
-            <p>Stop letting hidden roadblocks kill your startup's potential. Let's build your growth machine together.</p>
-            <a href="https://calendar.notion.so/meet/isaiahmcpeak/ex9dc4o7z" target="_blank" class="cta-button">Book a Call Now</a>
-        </div>
+      <div class="container">
+        <h2>Ready to Break Through?</h2>
+        <p>
+          Stop letting hidden roadblocks kill your startup's potential. Let's
+          build your growth machine together.
+        </p>
+        <!-- <a href="https://calendar.notion.so/meet/isaiahmcpeak/ex9dc4o7z" target="_blank" class="cta-button">Book a Call Now</a> -->
+      </div>
     </section>
-
-</body>
+  </body>
 </html>
